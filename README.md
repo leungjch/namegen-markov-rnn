@@ -1,12 +1,12 @@
 # Creature Name Generation Methods
 
-Implemented in Javascript for a creature generation aspect of a [larger project.](https://github.com/leungjch/gotta-task-em-all)
+Implemented in Javascript as part of a creature generation aspect of a [Pokemon-inspired productivity app.](https://github.com/leungjch/gotta-task-em-all)
 
 ## Markov Chains
 
 ### Motivation
 
-It's apparent that letters of words in the English language are somewhat interdependent. If you had to guess what the next letter of a word starting with "W" would be, it'd be a vowel like "a", "e", "i", "o", or "u", and not a consonant like "t" or "m". We can capture this intuition in the form of a first-order Markov chain, which gives us the probabilities of a next letter occurring given a current letter (e.g. when we have the letter "l", we have 50% probability of a "o" next, 20% probability of "a", 0% probability of "z", etc).
+It's apparent that letters of words in the English language are somewhat interdependent. If you had to guess what the next letter of a word starting with "W" would be, it'd be a vowel like "a", "e", "i", "o", or "u", and not a consonant like "t" or "m". We can capture this intuition in the form of a first-order Markov chain, which gives us the probabilities of a next letter occurring given a current letter (e.g. when we have the letter "l", we have 50% probability of a "o" next, 20% probability of "a", 0% probability of "z", etc). [This website gives a great explanation as to how a Markov Chain works.](https://setosa.io/ev/markov-chains/)
 
 ### Implementation
 
