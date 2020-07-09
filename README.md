@@ -20,7 +20,7 @@ We implement a simple first-order Markov chain, where the probability of the nex
 ### Limitations
 
 - Often, the results are too short or too long. A simple workaround is to discard the results of the Markov chain generation until we get a desired length (e.g. more than 3 letters and less than 10 letters).
-- Because this is a simple character-based Markov chain, sometimes the results are too simple or not very good names (e.g. "sa" or ""). Instead of using characters, we use chunks (e.g. "Pro" and "ject" from "project")
+- Because this is a simple character-based Markov chain, sometimes the results are too simple or not very good names (e.g. "sa" or "stattt"). Instead of using characters, we could use chunks (e.g. "Pro" and "ject" from "project")
 
 ## Recurrent Neural Networks
 

@@ -5,16 +5,22 @@ class MarkovChain
     {
         this.data = data
         this.generateChain()
-        for (let i = 0; i < 10; i++)
-        {
-            var genName = ''
+
             // only return a long word
-            while (genName.length < 4 || genName.length > 6)
-            {
-                genName = this.predict(String.fromCharCode(Math.floor(Math.random()*26)+97))
-            }
-            console.log(genName)
+
+        var genNames = this.predict(10, 5,15)
+        console.log(genNames)
+
+
+        // Show generated names on page
+        var listHTML = document.getElementById("namesList");
+        document.getElementById("namesList").innerHTML = "";
+        for (var i = 0; i < genNames.length; i++)
+        {
+             var nameList = "<li class=\"list-group-item\">" + genNames[i] + "</li>";
+             document.getElementById("namesList").innerHTML += nameList;
         }
+      
 
     }
 
@@ -50,34 +56,47 @@ class MarkovChain
         this.transitionMatrix = transitionMatrix
 
     }
-    predict(seedChar)
+    predict(n, min, max)
     {
-        var currentCharCode = seedChar.charCodeAt(0)-97
-        var genWord = [seedChar]
-
-        while (currentCharCode !== 26) // keep appending characters until we get end sequence
+        var words = []
+        for (let i = 0; i < n; i++)
         {
-            const sample = Math.random()
-            let total = 0
-            var nextChar;
-            // sample our probabilty distribution
-            for (let i = 0; i < this.transitionMatrix[currentCharCode].length; i++)
+            var seedChar = String.fromCharCode(Math.floor(Math.random()*26)+97)
+            var genName = ''
+            var genWord = []
+
+            while (genWord.length < min || genWord.length > max)
             {
-                total += this.transitionMatrix[currentCharCode][i]
-                if (sample < total)
+                genWord = [seedChar]
+                var currentCharCode = seedChar.charCodeAt(0)-97
+
+                while (currentCharCode !== 26) // keep appending characters until we get end sequence
                 {
-                    nextChar = i
-                    break
+                    const sample = Math.random()
+                    let total = 0
+                    var nextChar;
+                    // sample our probabilty distribution
+                    for (let i = 0; i < this.transitionMatrix[currentCharCode].length; i++)
+                    {
+                        total += this.transitionMatrix[currentCharCode][i]
+                        if (sample < total)
+                        {
+                            nextChar = i
+                            break
+                        }
+                    }
+                    currentCharCode = nextChar
+                    genWord.push(String.fromCharCode(nextChar+97))
                 }
             }
-            currentCharCode = nextChar
-            genWord.push(String.fromCharCode(nextChar+97))
+            words.push(genWord.splice(0,genWord.length-1).join(""))
+
         }
-        return (genWord.splice(0,genWord.length-1).join(""))
+        return words
     }
 }
 
-fetch("./markov_chain/dictionaries/first-names.json")
+fetch("./markov_chain/dictionaries/pokemon.json")
   .then(response => response.json())
   .then(json => new MarkovChain(json));
 

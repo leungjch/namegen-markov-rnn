@@ -3,9 +3,16 @@
     <head>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
         <script src="scripts/require.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     </head>
     <body>
-        <p id="paragraph"></p> 
-        <script type="module" src="markov_chain/markov.js"
+        <h1> Creature name generator </h1>
+        <p> Reload the page for more! </p>
+
+        <ul class id="namesList"></ul> 
+        <script type="module" src="markov_chain/markov.js"></script>
+        <h2> <a href="https://github.com/leungjch/namegen-markov-rnn">Github repo</a> </h2>
+
     </body>
 </html>
