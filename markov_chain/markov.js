@@ -96,7 +96,7 @@ class MarkovChain
     }
 }
 
-fetch("./markov_chain/dictionaries/pokemon.json")
+fetch("./dictionaries/pokemon.json")
   .then(response => response.json())
   .then(json => new MarkovChain(json));
 

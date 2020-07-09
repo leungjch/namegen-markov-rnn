@@ -26,3 +26,10 @@ We implement a simple first-order Markov chain, where the probability of the nex
 
 ...
 
+## Data used
+
+- [Pokemon names (sindresorhus)](https://github.com/sindresorhus/pokemon/blob/master/data/en.json)
+- [First names (dominictarr)](https://github.com/dominictarr/random-name/blob/master/names.json)
+
+
+
