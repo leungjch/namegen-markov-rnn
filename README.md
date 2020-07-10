@@ -1,6 +1,6 @@
 # Creature Name Generation Methods
 
-Implemented in Javascript as part of a creature generation aspect of a [Pokemon-inspired productivity app.](https://github.com/leungjch/gotta-task-em-all)
+Markov chains implemented in Javascript as part of a creature generation aspect of a [Pokemon-inspired productivity app.](https://github.com/leungjch/gotta-task-em-all) RNNs (specifically LSTMs) are also included but not shown in the demo. [See demo here](https://leungjch.github.io/namegen-markov-rnn/)
 
 ## Markov Chains
 
@@ -25,7 +25,8 @@ We implement a simple first-order Markov chain, where the probability of the nex
 ### Implementation
 - Import data and clean (remove spaces, non-alphabetical characters, convert everything to lowercase). Add a period to the end of each name to represent an "escape" character.
 - Apply one-hot encoding to the data. The resulting data should be a 3D matrix with the shape (num_names, max_name_length, 27).
-- Build and train model - we use one LSTM layer with 128 units.
+- Build and train model - we use two LSTM layers with 100 units.
+- Generate new words by sampling the probability distribution given a seed input (much like a Markov chain).
 ### Limitations
 - Training for too many epochs may lead to overfitting and subsequently, low quality names. It seems to be difficult to tell when exactly the network has begun to overfit, so this requires lots of tweaking to get right.
 - The implementation as it is only allows for creating names up to the maximum name length in the dataset.
